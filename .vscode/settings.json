@@ -1,0 +1,15 @@
+{
+	"files.associations": {
+		"solibft_types.h": "c",
+		"all.h": "c",
+		"types.h": "c",
+		"stdlib.h": "c",
+		"solibft.h": "c",
+		"unistd.h": "c",
+		"sostdio.h": "c",
+		"soctype.h": "c",
+		"sostring.h": "c",
+		"exemple.h": "c",
+		"sostdlib.h": "c"
+	}
+}
