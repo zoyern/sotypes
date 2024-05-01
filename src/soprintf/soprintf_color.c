@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <sotypes/all.h>
+#include <stdio.h>
 
 char	*soprintf_color_gethex(const char *s, int *len)
 {
@@ -29,12 +30,32 @@ char	*soprintf_color_gethex(const char *s, int *len)
 	return (hex);
 }
 
+void	soprintf_putcolor_write(const char **s,char *ansi_code, va_list list_arg, size_t *len)
+{
+	int	flag;
+
+	flag = 1;
+	write(1, ansi_code, soprint_strlen(ansi_code));
+	while (*s && flag > 0)
+	{
+		if (**s == '%')
+			soprintf_select(list_arg, s, len);
+		else
+			ft_putchar_len(**s, len);
+		(*s)++;
+		if (**s == '(')
+			flag++;
+		if (**s == ')' && flag > 0)
+			flag--;
+	}
+	write(1, "\033[0m", 4);
+}
+
 void	soprintf_putcolor_len(const char **s,va_list list_arg, size_t *len)
 {
 	(void)list_arg;
 	int		var_len;
 	char	*hex;
-	int		flag;
 	char*	ansi_code;
 
 	(*s)++;
@@ -44,28 +65,12 @@ void	soprintf_putcolor_len(const char **s,va_list list_arg, size_t *len)
 	*s += var_len;
 	if (!hex)
 		return ;
-	flag = 1;
 	if (**s == '(')
 		(*s)++;
 	else
 		return (free(hex));
 	ansi_code = hex_to_ansi(hex, 0);
-	write(1, ansi_code, soprint_strlen(ansi_code));
-	while (*s && (**s != ')' && flag > 0))
-	{
-		if (**s == '(')
-			flag++;
-		if (**s == ')' && flag > 0)
-			flag--;
-		if (**s == '%')
-			soprintf_select(list_arg, s, len);
-		else
-			ft_putchar_len(**s, len);
-		(*s)++;
-	}
-	ft_putchar_len(**s, len);
-	write(1, "\033[0m", 4);
-	(*s)++;
+	soprintf_putcolor_write(s, ansi_code, list_arg, len);
 	free(hex);
 	free(ansi_code);
 }
