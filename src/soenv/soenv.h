@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   somemory_show.c                                    :+:      :+:    :+:   */
+/*   soenv.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/27 19:17:04 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/01 07:20:29 by marvin           ###   ########.fr       */
+/*   Created: 2024/04/05 01:57:56 by marvin            #+#    #+#             */
+/*   Updated: 2024/04/30 18:09:01 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sotypes/all.h>
+#ifndef SOENV_H
+# define SOENV_H
 
-void	somemory_show(t_solib *solib)
-{
-	t_somemdata	*current;
+# include <sotypes/all.h>
 
-	current = solib->memory->first;
-	solib->print("color test : %CF26C29(coucou les amis (je suis un peu fatigué)) mdr\n");
-	while (current)
-	{
-		solib->print("%p -> %CF26C29(%p)\t\tnext : %p\n", current, current->ptr, current->next);
-		current = current->next;
-	}
-}
+void	sonew_env(t_solib *solib, int argc, char **argv, char **envp);
+
+#endif

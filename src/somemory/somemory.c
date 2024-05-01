@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   somemory.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almounib <almounib@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:16:39 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/25 21:11:24 by almounib         ###   ########.fr       */
+/*   Updated: 2024/04/30 20:06:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	somemory_close(t_solib *solib)
 		return (free(solib->memory));
 	solib->memory->clear(solib);
 	free(solib->memory);
+	solib->memory = NULL;
 }
 
 int	sonew_memory(t_solib *solib)
@@ -34,6 +35,10 @@ int	sonew_memory(t_solib *solib)
 	solib->memory->clear = somemory_clear;
 	solib->memory->add = somemory_add;
 	solib->memory->close = somemory_close;
-	solib->memory->first = NULL;
+	solib->memory->first = (t_somemdata *)malloc(sizeof(t_somemdata));
+	if (!solib->memory)
+		return (free(solib->memory), 1);
+	solib->memory->first->ptr = NULL;
+	solib->memory->first->next = NULL;
 	return (0);
 }

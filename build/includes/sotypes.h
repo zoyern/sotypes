@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sotypes.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almounib <almounib@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 17:59:30 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/25 21:10:11 by almounib         ###   ########.fr       */
+/*   Updated: 2024/04/30 18:02:51 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include <sotypes/types.h>
 
-t_solib	*sonew_types(void);
+t_solib	*sonew_types(int argc, char **argv, char **envp);
 
 #endif
