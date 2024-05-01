@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include <sotypes/all.h>
-#include <stdio.h>
 
 char	*soprintf_color_gethex(const char *s, int *len)
 {
