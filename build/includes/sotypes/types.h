@@ -6,12 +6,12 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 21:27:45 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/30 20:03:15 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/02 14:46:53 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPES_H
-# define TYPES_H
+#ifndef SOTYPES_TYPES_H
+# define SOTYPES_TYPES_H
 
 # include <stdarg.h>
 # include <unistd.h>
