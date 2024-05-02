@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sofree.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almounib <almounib@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 19:20:45 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/25 21:10:41 by almounib         ###   ########.fr       */
+/*   Updated: 2024/05/02 13:16:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	sofree(t_solib *solib, void *ptr)
 
 	if (!ptr)
 		return (0);
+	if (!solib)
+		return (free(ptr), 1);
 	memory = somemory_remove(solib, ptr);
 	if (!memory)
 		return (0);
