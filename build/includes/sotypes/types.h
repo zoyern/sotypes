@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 21:27:45 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/02 14:46:53 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/04 15:03:03 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_solib			t_solib;
 typedef struct s_somemory		t_somemory;
 typedef struct s_somemdata		t_somemdata;
 typedef struct s_sofuncs		t_sofuncs;
+typedef struct s_solibft		t_solibft;
 
 typedef struct s_somemdata {
 	void		*ptr;
@@ -54,6 +55,7 @@ typedef struct s_solib
 	void		*(*malloc)(t_solib *solib, size_t size);
 	int			(*free)(t_solib *solib, void *ptr);
 	int			(*print)(const char *str, ...);
+	t_solibft	*solibft;
 }	t_solib;
 
 #endif
