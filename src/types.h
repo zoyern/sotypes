@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 21:27:45 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/04 15:03:03 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/04 16:28:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct s_solib
 	void		*(*malloc)(t_solib *solib, size_t size);
 	int			(*free)(t_solib *solib, void *ptr);
 	int			(*print)(const char *str, ...);
-	t_solibft	*solibft;
+	t_solibft	*libft;
 }	t_solib;
 
 #endif
