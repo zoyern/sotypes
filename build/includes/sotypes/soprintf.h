@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   soprintf.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: almounib <almounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 01:57:56 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/01 07:17:58 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/16 12:47:27 by almounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_putstr_len(char *s, size_t *len);
 void	ft_putnbr_len(int n, size_t *len);
 void	ft_putnbr_len_base(unsigned int n, char *base, size_t *len);
 void	ft_putptr_len(unsigned long n, char *base, size_t *len);
-char*	hex_to_ansi(char* hex, int is_background);
+char	*hex_to_ansi(char *hex, int is_background);
 char	*ansi_format(int cc, int is_background);
 char	*ansi_concat(char *base, char *cc, char *out);
 int		ansi_16_basic_colors(int r, int g, int b);

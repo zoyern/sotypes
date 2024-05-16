@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   soprintf_c.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: almounib <almounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 19:05:00 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/30 19:05:00 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/16 12:44:06 by almounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ void	ft_putchar_len(char c, size_t *len)
 void	ft_putstr_len(char *s, size_t *len)
 {
 	if (!s)
-		return ft_putstr_len("(null)", len);
+		return (ft_putstr_len("(null)", len));
 	*len += write(1, s, soprint_strlen(s));
 }

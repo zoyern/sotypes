@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   soprintf_color.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: almounib <almounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 05:30:23 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/01 05:30:23 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/16 12:46:25 by almounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ char	*soprintf_color_gethex(const char *s, int *len)
 	return (hex);
 }
 
-void	soprintf_putcolor_write(const char **s,char *ansi_code, va_list list_arg, size_t *len)
+void	soprintf_putcolor_write(
+	const char **s, char *ansi_code, va_list list_arg, size_t *len)
 {
 	int	flag;
 
@@ -50,16 +51,15 @@ void	soprintf_putcolor_write(const char **s,char *ansi_code, va_list list_arg, s
 	write(1, "\033[0m", 4);
 }
 
-void	soprintf_putcolor_len(const char **s,va_list list_arg, size_t *len)
+void	soprintf_putcolor_len(const char **s, va_list list_arg, size_t *len)
 {
-	(void)list_arg;
 	int		var_len;
 	char	*hex;
-	char*	ansi_code;
+	char	*ansi_code;
 
 	(*s)++;
 	if (!*s)
-		return ft_putstr_len("\nERROR COLOR\n", len);
+		return (ft_putstr_len("\nERROR COLOR\n", len));
 	hex = soprintf_color_gethex(*s, &var_len);
 	*s += var_len;
 	if (!hex)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   soprintf_ansi_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: almounib <almounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 05:19:43 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/01 05:19:43 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/16 12:43:30 by almounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	soconvert_rgb_to_ansi(int r, int g, int b)
 {
 	if (abs(r - g) < 16 && abs(r - b) < 16 && abs(g - b) < 16)
-		return (ansi_grey_ramp(r,g,b));
-    return (ansi_16_basic_colors(r,g,b));
+		return (ansi_grey_ramp(r, g, b));
+	return (ansi_16_basic_colors(r, g, b));
 }
 
 void	ansi_strmcat(char **dst, char *src)

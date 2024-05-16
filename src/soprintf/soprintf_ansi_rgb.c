@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   soprintf_ansi_rgb.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: almounib <almounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 05:18:35 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/01 05:18:35 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/16 12:42:39 by almounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ansi_grey_ramp(int r, int g, int b)
 {
 	int	grey;
-	int cc;
+	int	cc;
 
 	grey = (r + g + b) / 3;
 	if (grey < 5)
@@ -24,13 +24,13 @@ int	ansi_grey_ramp(int r, int g, int b)
 		cc = 15;
 	else
 		cc = (grey - 3) / 10 + 232;
-	return cc;
+	return (cc);
 }
 
 void	ansi_16_basic_colors_red(int r, int *cc)
 {
-	 if (r < 48)
-        ;
+	if (r < 48)
+		;
 	else if (r < 115)
 		*cc += (36 * 1);
 	else if (r < 156)
@@ -42,11 +42,10 @@ void	ansi_16_basic_colors_red(int r, int *cc)
 	else
 		*cc += (36 * 5);
 }
+
 void	ansi_16_basic_colors_green(int g, int *cc)
 {
-	if (g < 48)
-        ;
-	else if (g < 115)
+	if (g < 115 && g > 47)
 		*cc += (6 * 1);
 	else if (g < 156)
 		*cc += (6 * 2);
@@ -57,6 +56,7 @@ void	ansi_16_basic_colors_green(int g, int *cc)
 	else
 		*cc += (6 * 5);
 }
+
 void	ansi_16_basic_colors_blue(int b, int *cc)
 {
 	if (b < 48)

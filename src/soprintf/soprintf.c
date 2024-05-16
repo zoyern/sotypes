@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   soprintf.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: almounib <almounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:16:39 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/01 05:35:12 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/16 12:31:28 by almounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,23 @@ void	soprintf_select(va_list list_arg, const char **str, size_t *len)
 	else if (!soprintf_cmp(*str, "c", 1))
 		ft_putchar_len(va_arg(list_arg, int), len);
 	else if (!soprintf_cmp(*str, "C", 1))
-		soprintf_putcolor_len(str,list_arg, len);
+		soprintf_putcolor_len(str, list_arg, len);
 	else if (!soprintf_cmp(*str, "%", 1))
 		ft_putchar_len('%', len);
 	else if (!soprintf_cmp(*str, "s", 1))
 		ft_putstr_len(va_arg(list_arg, char *), len);
 	else if (!soprintf_cmp(*str, "X", 1))
-		ft_putnbr_len_base((va_arg(list_arg, unsigned int)), "0123456789ABCDEF", len);
+		ft_putnbr_len_base((va_arg(list_arg, unsigned int)),
+			"0123456789ABCDEF", len);
 	else if (!soprintf_cmp(*str, "x", 1))
-		ft_putnbr_len_base((va_arg(list_arg, unsigned int)), "0123456789abcdef", len);
+		ft_putnbr_len_base((va_arg(list_arg, unsigned int)),
+			"0123456789abcdef", len);
 	else if (!soprintf_cmp(*str, "u", 1))
-		ft_putnbr_len_base((va_arg(list_arg, unsigned int)), "0123456789", len);
+		ft_putnbr_len_base((va_arg(list_arg, unsigned int)),
+			"0123456789", len);
 	else if (!soprintf_cmp(*str, "p", 1))
-		ft_putptr_len((va_arg(list_arg, unsigned long)), "0123456789abcdef", len);
+		ft_putptr_len((va_arg(list_arg, unsigned long)),
+			"0123456789abcdef", len);
 }
 
 int	soprintf(const char *str, ...)

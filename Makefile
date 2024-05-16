@@ -3,17 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: almounib <almounib@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 16:01:12 by marvin            #+#    #+#              #
-#    Updated: 2024/04/10 03:02:33 by marvin           ###   ########.fr        #
+#    Updated: 2024/05/16 12:52:07 by almounib         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 include build.mk
-
-#❖═════Arguments══════❖
-ARGS		= 
 
 #❖═════Commandes══════❖
 all : $(NAME)

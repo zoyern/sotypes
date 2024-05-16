@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   soenv.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: almounib <almounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:16:39 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/30 18:55:48 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/16 12:30:16 by almounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sotypes/all.h>
 
-void	soenv_format(t_solib *solib, t_soenv *env,int argc, char **argv)
+void	soenv_format(t_solib *solib, t_soenv *env, int argc, char **argv)
 {
 	int	i;
+
 	env->name = argv[0];
 	if (argc < 1)
 		return ;
