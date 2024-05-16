@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
+/*   sotypes_t.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: almounib <almounib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 21:27:45 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/16 12:25:27 by almounib         ###   ########.fr       */
+/*   Updated: 2024/05/16 14:39:33 by almounib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPES_H
-# define TYPES_H
+#ifndef SOTYPES_T_H
+# define SOTYPES_T_H
 
 # include <stdarg.h>
 # include <unistd.h>
