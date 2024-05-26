@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   soprintf_color.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almounib <almounib@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 05:30:23 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/16 12:46:25 by almounib         ###   ########.fr       */
+/*   Updated: 2024/05/26 20:22:34 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	soprintf_putcolor_write(
 			flag++;
 		if (**s == ')' && flag > 0)
 			flag--;
+		write(1, ansi_code, soprint_strlen(ansi_code));
 	}
 	write(1, "\033[0m", 4);
 }
