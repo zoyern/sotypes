@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   soprintf.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almounib <almounib@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:16:39 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/16 12:31:28 by almounib         ###   ########.fr       */
+/*   Updated: 2024/05/26 14:24:54 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	soprintf_select(va_list list_arg, const char **str, size_t *len)
 		ft_putchar_len('%', len);
 	else if (!soprintf_cmp(*str, "s", 1))
 		ft_putstr_len(va_arg(list_arg, char *), len);
+	else if (!soprintf_cmp(*str, "S", 1))
+		ft_putstrs_len(va_arg(list_arg, char **), len);
 	else if (!soprintf_cmp(*str, "X", 1))
 		ft_putnbr_len_base((va_arg(list_arg, unsigned int)),
 			"0123456789ABCDEF", len);
