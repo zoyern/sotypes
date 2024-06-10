@@ -6,28 +6,49 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:16:39 by marvin            #+#    #+#             */
-/*   Updated: 2024/06/10 21:11:01 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/10 21:23:16 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sotypes/all.h>
 
-char	*soenv_dup(t_solib *solib, const char *s)
+size_t	soenv_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+size_t	soenv_strlcpy(char *dst, const char *src, size_t sz)
 {
 	size_t	len;
-	char	*t;
+
+	len = (soenv_strlen(src));
+	if (!sz)
+		return (len);
+	while (*src && sz-- - 1)
+		*dst++ = *src++;
+	*dst = '\0';
+	return (len);
+}
+
+char	*soenv_strdup(t_solib *solib, const char *s)
+{
+	char	*out;
+	size_t	s_len;
 
 	if (!s)
 		return (0);
-	while (s[len])
-		len++;
-	t = (char *)solib->malloc(solib, sizeof(char) * (len + 1));
-	if (!t)
+	s_len = soenv_strlen(s);
+	out = solib->malloc(solib, sizeof(char) * (s_len + 1));
+	if (!out)
 		return (0);
-	while (*s)
-		*t++ = *s++;
-	*t = 0;
-	return (t -= len);
+	soenv_strlcpy(out, s, s_len + 1);
+	out[s_len] = 0;
+	return (out);
 }
 
 void	soenv_format(t_solib *solib, t_soenv *env, int argc, char **argv)
@@ -45,7 +66,7 @@ void	soenv_format(t_solib *solib, t_soenv *env, int argc, char **argv)
 	env->argc = i;
 	i = -1;
 	while (++i < env->argc && argv[i])
-		env->argv[i] = soenv_dup(solib, argv[i]);
+		env->argv[i] = soenv_strdup(solib, argv[i]);
 	env->argv[i] = 0;
 }
 

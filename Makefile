@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 16:01:12 by marvin            #+#    #+#              #
-#    Updated: 2024/06/10 21:13:35 by marvin           ###   ########.fr        #
+#    Updated: 2024/06/10 21:25:54 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,6 @@ clean : clear
 	@echo "Clean   : *.o in build !"
 
 fclean :
-	@rm -f libs/
 	@rm -f $(NAME)
 	@echo "Clean   : ./$(NAME)"
 
