@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 19:05:00 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/26 14:23:58 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/10 20:49:42 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,12 @@ void	ft_putstrs_len(char **strs, size_t *len)
 		*len += write(1, "\n", 1);
 		i++;
 	}
+}
+
+void	ft_putbool_len(int boolean, size_t *len)
+{
+	if (boolean)
+		*len += soprintf("%C0000FF(TRUE)");
+	else
+		*len += soprintf("%CFF0000(FALSE)");
 }
