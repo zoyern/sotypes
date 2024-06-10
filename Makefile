@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 16:01:12 by marvin            #+#    #+#              #
-#    Updated: 2024/06/10 20:53:27 by marvin           ###   ########.fr        #
+#    Updated: 2024/06/10 21:13:35 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ clean : clear
 	@rm -rf build/
 	@echo "Clean   : *.o in build !"
 
-fclean : clean
+fclean :
+	@rm -f libs/
 	@rm -f $(NAME)
 	@echo "Clean   : ./$(NAME)"
 
@@ -46,6 +47,6 @@ check :
 	funcheck -o ./$(NAME) $(ARGS)
 	@echo ""
 
-re: fclean all clear 
+re: clean all clear 
 
 .PHONY: all clean fclean re val
