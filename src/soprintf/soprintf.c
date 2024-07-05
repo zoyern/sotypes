@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:16:39 by marvin            #+#    #+#             */
-/*   Updated: 2024/06/10 20:41:41 by marvin           ###   ########.fr       */
+/*   Updated: 2024/07/05 04:08:47 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	soprintf_select_nbr(va_list list_arg, const char **str, size_t *len)
 	else if (!soprintf_cmp(*str, "p", 1))
 		ft_putptr_len((va_arg(list_arg, unsigned long)),
 			"0123456789abcdef", len);
-	
 }
 
 void	soprintf_select(va_list list_arg, const char **str, size_t *len)
