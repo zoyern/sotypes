@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 21:31:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/04 16:28:41 by marvin           ###   ########.fr       */
+/*   Updated: 2024/07/07 19:01:10 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 int	solib_close(t_solib *solib, int status)
 {
 	if (!solib)
+	{
+		if (status)
+			exit(status);
 		return (status);
+	}
 	solib->memory->close(solib);
 	free(solib);
 	if (status)
