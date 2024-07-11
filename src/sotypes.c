@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 21:31:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/07/07 19:01:10 by marvin           ###   ########.fr       */
+/*   Updated: 2024/07/11 20:12:18 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ t_solib	*sonew_types(int argc, char **argv, char **envp)
 	solib->malloc = somalloc;
 	solib->free = sofree;
 	solib->libft = NULL;
+	solib->time = NULL;
 	sonew_env(solib, argc, argv, envp);
 	return (solib);
 }
