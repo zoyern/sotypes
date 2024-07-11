@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 01:57:56 by marvin            #+#    #+#             */
-/*   Updated: 2024/06/10 20:49:32 by marvin           ###   ########.fr       */
+/*   Updated: 2024/07/11 03:28:21 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 int		soprintf(const char *str, ...);
 void	soprintf_select(va_list list_arg, const char **str, size_t *len);
 size_t	soprint_strlen(const char *str);
-void	soprintf_putcolor_len(const char **s, va_list list_arg, size_t *len);
+void	soprintf_putcolor_len(const char **s, va_list list_arg,
+			int is_background, size_t *len);
 void	ft_putchar_len(char c, size_t *len);
 void	ft_putstr_len(char *s, size_t *len);
 void	ft_putstrs_len(char **strs, size_t *len);

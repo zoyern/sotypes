@@ -6,11 +6,23 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 05:30:23 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/26 20:22:34 by marvin           ###   ########.fr       */
+/*   Updated: 2024/07/11 04:15:43 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sotypes/all.h>
+
+int	soprintf_color_compare(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	if (n < 1)
+		return (0);
+	while (s1[i] && s2[i] && (s1[i] == s2[i]) && i < (n - 1))
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
 
 char	*soprintf_color_gethex(const char *s, int *len)
 {
@@ -35,6 +47,7 @@ void	soprintf_putcolor_write(
 	int	flag;
 
 	flag = 1;
+	write(1, "\033[1m", 4);
 	write(1, ansi_code, soprint_strlen(ansi_code));
 	while (*s && flag > 0)
 	{
@@ -52,7 +65,8 @@ void	soprintf_putcolor_write(
 	write(1, "\033[0m", 4);
 }
 
-void	soprintf_putcolor_len(const char **s, va_list list_arg, size_t *len)
+void	soprintf_putcolor_len(const char **s, va_list list_arg,
+		int is_background, size_t *len)
 {
 	int		var_len;
 	char	*hex;
@@ -61,6 +75,12 @@ void	soprintf_putcolor_len(const char **s, va_list list_arg, size_t *len)
 	(*s)++;
 	if (!*s)
 		return (ft_putstr_len("\nERROR COLOR\n", len));
+	if (!soprintf_color_compare(*s, "clear()", 7))
+	{
+		len += write(1, "\033[H\e[2J", 7);
+		(*s) += 6;
+		return ;
+	}
 	hex = soprintf_color_gethex(*s, &var_len);
 	*s += var_len;
 	if (!hex)
@@ -69,7 +89,7 @@ void	soprintf_putcolor_len(const char **s, va_list list_arg, size_t *len)
 		(*s)++;
 	else
 		return (free(hex));
-	ansi_code = hex_to_ansi(hex, 0);
+	ansi_code = hex_to_ansi(hex, is_background);
 	soprintf_putcolor_write(s, ansi_code, list_arg, len);
 	free(hex);
 	free(ansi_code);
