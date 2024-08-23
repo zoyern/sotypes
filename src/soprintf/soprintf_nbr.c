@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   soprintf_nbr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almounib <almounib@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 19:03:54 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/16 12:46:30 by almounib         ###   ########.fr       */
+/*   Updated: 2024/08/23 20:12:19 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sotypes/all.h>
 
-void	ft_putnbr_len(int n, size_t *len)
+void	ft_putnbr_len(long long n, size_t *len)
 {
-	long int	nbr;
+	long long	nbr;
 
 	nbr = n;
 	if (nbr < 0)
@@ -31,10 +31,10 @@ void	ft_putnbr_len(int n, size_t *len)
 		ft_putchar_len(nbr + '0', len);
 }
 
-void	ft_putnbr_len_base(unsigned int n, char *base, size_t *len)
+void	ft_putnbr_len_base(unsigned long long n, char *base, size_t *len)
 {
-	unsigned long int	nbr;
-	unsigned int		len_base;
+	unsigned long long	nbr;
+	unsigned long long	len_base;
 
 	nbr = n;
 	len_base = soprint_strlen(base);
