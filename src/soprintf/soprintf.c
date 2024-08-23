@@ -46,9 +46,15 @@ void	soprintf_select(va_list list_arg, const char **str, size_t *len)
 {
 	(*str)++;
 	if (!soprintf_cmp(*str, "lld", 3))
+	{
+		(*str) += 2;
 		return (ft_putnbr_len(va_arg(list_arg, long long), len));
+	}
 	if (!soprintf_cmp(*str, "ld", 2))
+	{
+		(*str)++;
 		return (ft_putnbr_len(va_arg(list_arg, long), len));
+	}
 	if (!soprintf_cmp(*str, "c", 1))
 		return (ft_putchar_len(va_arg(list_arg, int), len));
 	else if (!soprintf_cmp(*str, "C", 1))
