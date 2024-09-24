@@ -15,17 +15,19 @@
 int	main(int argc, char **argv, char **envp)
 {
 	t_solib	*solib;
+	char	*testing;
 
 	solib = sonew_types(argc, argv, envp);
 	if (!solib)
 		return (solib->close(solib, EXIT_FAILURE));
 	solib->print("SOLIB INIT : %b\n", solib);
-	soprintf(
+	testing = soprintf_get(solib, 
 		"Program name : %s\n \
 		Number of argument : %d\n \
 		Aruments : \n%S \
 		Envp is init : %b\n\n",
 		solib->env->name, solib->env->argc,
 		solib->env->argv, solib->env->envp);
-	return (solib->close(solib, EXIT_SUCCESS));
+	soprintf("testing : \n%s\n", testing);
+	return (solib_close(solib, EXIT_SUCCESS));
 }

@@ -21,5 +21,7 @@ int		sofree(t_solib *solib, void *ptr);
 int		solib_close(t_solib *solib, int status);
 int		soprintf(const char *str, ...);
 int		soprintf_fd(int fd, const char *str, ...);
+char	*soprintf_get(t_solib *solib, const char *str, ...);
+int     solib_close(t_solib *solib, int status);
 
 #endif

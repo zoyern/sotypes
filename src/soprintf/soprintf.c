@@ -94,3 +94,29 @@ int	soprintf_fd(int fd, const char *str, ...)
 	va_start(list_arg, str);
 	return (ft_printf(fd, str, list_arg));
 }
+
+char	*soprintf_get(t_solib *solib, const char *str, ...)
+{
+	va_list	list_arg;
+	int pipefd[2];
+	char *buf;
+	char *line;
+	char *ret;
+
+	if (pipe(pipefd) == -1)
+		solib_close(solib, EXIT_FAILURE);
+	if (!str)
+		return (NULL);
+	va_start(list_arg, str);
+	ft_printf(pipefd[1], str, list_arg);
+	buf = soenv_strdup(NULL, " ");
+	line = soenv_strdup(NULL, "");
+	close(pipefd[1]);
+	while (read(pipefd[0], buf, 1))
+		ansi_strmcat(&line, buf);
+	free(buf);
+	ret = soenv_strdup(solib, line);
+	free(line);
+	close(pipefd[0]);
+	return (ret);
+}

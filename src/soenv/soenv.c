@@ -43,7 +43,7 @@ char	*soenv_strdup(t_solib *solib, const char *s)
 	if (!s)
 		return (0);
 	s_len = soenv_strlen(s);
-	out = solib->malloc(solib, sizeof(char) * (s_len + 1));
+	out = somalloc(solib, sizeof(char) * (s_len + 1));
 	if (!out)
 		return (0);
 	soenv_strlcpy(out, s, s_len + 1);

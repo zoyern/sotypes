@@ -19,4 +19,6 @@
 # include <sotypes/soenv.h>
 # include <sotypes/soprintf.h>
 
+int	solib_close(t_solib *solib, int status);
+
 #endif
