@@ -15,6 +15,7 @@
 		"stdio.h": "c",
 		"soenv.h": "c",
 		"random": "c",
-		"stdarg.h": "c"
+		"stdarg.h": "c",
+		"soprintf.h": "c"
 	}
 }

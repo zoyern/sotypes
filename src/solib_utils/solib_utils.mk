@@ -10,10 +10,10 @@
 #                                                                              #
 # **************************************************************************** #
 
-SOENV_DIR		=	soenv
+SOLIB_UTILS_DIR		=	solib_utils
 
-SOENV_HEADER	=	soenv.h
-SOENV_FILE		=	soenv.c
+SOLIB_UTILS_HEADER	=	solib_utils.h
+SOLIB_UTILS_FILE		=	solib_utils.c
 
-SOENV			=	$(addprefix $(SOENV_DIR)/, $(SOENV_FILE))
-SOENV_HEAD		=	$(addprefix $(SOENV_DIR)/, $(SOENV_HEADER))
+SOLIB_UTILS			=	$(addprefix $(SOLIB_UTILS_DIR)/, $(SOLIB_UTILS_FILE))
+SOLIB_UTILS_HEAD		=	$(addprefix $(SOLIB_UTILS_DIR)/, $(SOLIB_UTILS_HEADER))

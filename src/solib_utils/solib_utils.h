@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   all.h                                              :+:      :+:    :+:   */
+/*   solib_utils.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/11 21:32:42 by marvin            #+#    #+#             */
-/*   Updated: 2024/09/26 21:27:07 by marvin           ###   ########.fr       */
+/*   Created: 2024/04/05 01:57:56 by marvin            #+#    #+#             */
+/*   Updated: 2024/09/26 21:30:59 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ALL_H
-# define ALL_H
+#ifndef SOLIB_UTILS_H
+# define SOLIB_UTILS_H
 
-# include <sotypes/sotypes_t.h>
-# include <sotypes.h>
-# include <sotypes/somemory.h>
-# include <sotypes/soenv.h>
-# include <sotypes/soprintf.h>
-# include <sotypes/solib_utils.h>
+# include <sotypes/all.h>
 
-int	solib_close(t_solib *solib, int status);
+size_t	solib_strlen(const char *str);
+int		solib_strcmp(const char *s1, const char *s2, size_t n);
+int		hex_char_to_int(char hex_char);
+void	solib_strmcat(char **dst, char *src);
+char	*solib_strchr(const char *str, int c);
 
 #endif

@@ -15,45 +15,46 @@
 void	soprintf_select_nbr(int fd, va_list list_arg, const char **str,
 			size_t *len)
 {
-	if (!soprintf_cmp(*str, "i", 1) || !soprintf_cmp(*str, "d", 1))
+	if (!solib_strcmp(*str, "i", 1) || !solib_strcmp(*str, "d", 1))
 		return (ft_putnbr_len(fd, va_arg(list_arg, int), len));
-	else if (!soprintf_cmp(*str, "X", 1))
+	else if (!solib_strcmp(*str, "X", 1))
 		return (ft_putnbr_len_base(fd, (va_arg(list_arg, unsigned int)),
 				"0123456789ABCDEF", len));
-	else if (!soprintf_cmp(*str, "x", 1))
+	else if (!solib_strcmp(*str, "x", 1))
 		return (ft_putnbr_len_base(fd, (va_arg(list_arg, unsigned int)),
 				"0123456789abcdef", len));
-	else if (!soprintf_cmp(*str, "u", 1))
+	else if (!solib_strcmp(*str, "u", 1))
 		return (ft_putnbr_len_base(fd, (va_arg(list_arg, unsigned int)),
 				"0123456789", len));
-	else if (!soprintf_cmp(*str, "p", 1))
+	else if (!solib_strcmp(*str, "p", 1))
 		return (ft_putptr_len(fd, (va_arg(list_arg, unsigned long)),
 				"0123456789abcdef", len));
 }
 
-void	soprintf_select(int fd, va_list list_arg, const char **str, size_t *len)
+size_t	soprintf_select(int fd, va_list list_arg, const char **str, size_t *len)
 {
+	size_t	tmp;
+
+	tmp = *len;
 	(*str)++;
-	if (!soprintf_cmp(*str, "lld", 3))
+	if (!solib_strcmp(*str, "lld", 3))
 		return ((*str) += 2, ft_putnbr_len(fd, va_arg(list_arg, long long),
-				len));
-	if (!soprintf_cmp(*str, "ld", 2))
-		return ((*str)++, ft_putnbr_len(fd, va_arg(list_arg, long), len));
-	if (!soprintf_cmp(*str, "c", 1))
-		return (ft_putchar_len(fd, va_arg(list_arg, int), len));
-	else if (!soprintf_cmp(*str, "C", 1))
-		return ((void)(*len += soprintf_putcolor_len(fd, str, list_arg, 0)));
-	else if (!soprintf_cmp(*str, "B", 1))
-		return ((void)(*len += soprintf_putcolor_len(fd, str, list_arg, 1)));
-	else if (!soprintf_cmp(*str, "%", 1))
-		return (ft_putchar_len(fd, '%', len));
-	else if (!soprintf_cmp(*str, "s", 1))
-		return (ft_putstr_len(fd, va_arg(list_arg, char *), len));
-	else if (!soprintf_cmp(*str, "S", 1))
-		return (ft_putstrs_len(fd, va_arg(list_arg, char **), len));
-	else if (!soprintf_cmp(*str, "b", 1))
-		return (ft_putbool_len(fd, va_arg(list_arg, int), len));
-	soprintf_select_nbr(fd, list_arg, str, len);
+				len), *len - tmp);
+	if (!solib_strcmp(*str, "ld", 2))
+		return ((*str)++, ft_putnbr_len(fd, va_arg(list_arg, long), len), *len - tmp);
+	if (!solib_strcmp(*str, "c", 1))
+		return (ft_putchar_len(fd, va_arg(list_arg, int), len), *len - tmp);
+	else if (!solib_strcmp(*str, "C", 1))
+		return (soprintf_putcolor_len(fd, str, list_arg, len), *len - tmp);
+	else if (!solib_strcmp(*str, "%", 1))
+		return (ft_putchar_len(fd, '%', len), *len - tmp);
+	else if (!solib_strcmp(*str, "s", 1))
+		return (ft_putstr_len(fd, va_arg(list_arg, char *), len), *len - tmp);
+	else if (!solib_strcmp(*str, "S", 1))
+		return (ft_putstrs_len(fd, va_arg(list_arg, char **), len), *len - tmp);
+	else if (!solib_strcmp(*str, "b", 1))
+		return (ft_putbool_len(fd, va_arg(list_arg, int), len), *len - tmp);
+	return (soprintf_select_nbr(fd, list_arg, str, len), *len - tmp);
 }
 
 int	ft_printf(int fd, const char *str, va_list args)
@@ -113,7 +114,7 @@ char	*soprintf_get(t_solib *solib, const char *str, ...)
 	line = soenv_strdup(NULL, "");
 	close(pipefd[1]);
 	while (read(pipefd[0], buf, 1))
-		ansi_strmcat(&line, buf);
+		solib_strmcat(&line, buf);
 	free(buf);
 	ret = soenv_strdup(solib, line);
 	free(line);

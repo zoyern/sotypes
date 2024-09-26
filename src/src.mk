@@ -3,16 +3,17 @@
 #                                                         :::      ::::::::    #
 #    src.mk                                             :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: almounib <almounib@student.42.fr>          +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/01 18:55:59 by marvin            #+#    #+#              #
-#    Updated: 2024/05/16 14:40:27 by almounib         ###   ########.fr        #
+#    Updated: 2024/09/26 21:19:18 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 include $(CURDIR)/src/somemory/somemory.mk
 include $(CURDIR)/src/soenv/soenv.mk
 include $(CURDIR)/src/soprintf/soprintf.mk
+include $(CURDIR)/src/solib_utils/solib_utils.mk
 
 SRC_DIR		= $(CURDIR)/src
 
@@ -23,14 +24,17 @@ SRC_FILES	= sotypes.c
 DIR			+= $(SOMEMORY_DIR)
 DIR			+= $(SOENV_DIR)
 DIR			+= $(SOPRINTF_DIR)
+DIR			+= $(SOLIB_UTILS_DIR)
 
 SRC_HEADER	+= $(SOMEMORY_HEAD)
 SRC_HEADER	+= $(SOENV_HEAD)
 SRC_HEADER	+= $(SOPRINTF_HEAD)
+SRC_HEADER	+= $(SOLIB_UTILS_HEAD)
 
 SRC_FILES	+= $(SOMEMORY)
 SRC_FILES	+= $(SOENV)
 SRC_FILES	+= $(SOPRINTF)
+SRC_FILES	+= $(SOLIB_UTILS)
 
 HEADERS		= $(addprefix $(SRC_DIR)/, $(SRC_HEADER))
 SRC			= $(addprefix $(SRC_DIR)/, $(SRC_FILES))

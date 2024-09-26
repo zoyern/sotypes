@@ -38,7 +38,7 @@ void	ft_putnbr_len_base(int fd, unsigned long long n, char *base,
 	unsigned long long	len_base;
 
 	nbr = n;
-	len_base = soprint_strlen(base);
+	len_base = solib_strlen(base);
 	if (nbr > (len_base - 1))
 	{
 		ft_putnbr_len_base(fd, nbr / len_base, base, len);
