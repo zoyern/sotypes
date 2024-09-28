@@ -13,7 +13,7 @@
 SOLIB_UTILS_DIR		=	solib_utils
 
 SOLIB_UTILS_HEADER	=	solib_utils.h
-SOLIB_UTILS_FILE		=	solib_utils.c
+SOLIB_UTILS_FILE		=	solib_utils.c solib_utils2.c solib_utils_convert.c
 
 SOLIB_UTILS			=	$(addprefix $(SOLIB_UTILS_DIR)/, $(SOLIB_UTILS_FILE))
 SOLIB_UTILS_HEAD		=	$(addprefix $(SOLIB_UTILS_DIR)/, $(SOLIB_UTILS_HEADER))

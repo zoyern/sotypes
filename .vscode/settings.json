@@ -16,6 +16,19 @@
 		"soenv.h": "c",
 		"random": "c",
 		"stdarg.h": "c",
-		"soprintf.h": "c"
+		"soprintf.h": "c",
+		"array": "c",
+		"*.tcc": "c",
+		"string": "c",
+		"unordered_map": "c",
+		"memory": "c",
+		"fstream": "c",
+		"functional": "c",
+		"istream": "c",
+		"ostream": "c",
+		"vector": "c",
+		"sstream": "c",
+		"streambuf": "c",
+		"tuple": "c"
 	}
 }

@@ -41,7 +41,8 @@ size_t	soprintf_select(int fd, va_list list_arg, const char **str, size_t *len)
 		return ((*str) += 2, ft_putnbr_len(fd, va_arg(list_arg, long long),
 				len), *len - tmp);
 	if (!solib_strcmp(*str, "ld", 2))
-		return ((*str)++, ft_putnbr_len(fd, va_arg(list_arg, long), len), *len - tmp);
+		return ((*str)++, ft_putnbr_len(fd, va_arg(list_arg, long), len),
+			*len - tmp);
 	if (!solib_strcmp(*str, "c", 1))
 		return (ft_putchar_len(fd, va_arg(list_arg, int), len), *len - tmp);
 	else if (!solib_strcmp(*str, "C", 1))
@@ -94,30 +95,4 @@ int	soprintf_fd(int fd, const char *str, ...)
 		return (-1);
 	va_start(list_arg, str);
 	return (ft_printf(fd, str, list_arg));
-}
-
-char	*soprintf_get(t_solib *solib, const char *str, ...)
-{
-	va_list	list_arg;
-	int pipefd[2];
-	char *buf;
-	char *line;
-	char *ret;
-
-	if (pipe(pipefd) == -1)
-		solib_close(solib, EXIT_FAILURE);
-	if (!str)
-		return (NULL);
-	va_start(list_arg, str);
-	ft_printf(pipefd[1], str, list_arg);
-	buf = soenv_strdup(NULL, " ");
-	line = soenv_strdup(NULL, "");
-	close(pipefd[1]);
-	while (read(pipefd[0], buf, 1))
-		solib_strmcat(&line, buf);
-	free(buf);
-	ret = soenv_strdup(solib, line);
-	free(line);
-	close(pipefd[0]);
-	return (ret);
 }
