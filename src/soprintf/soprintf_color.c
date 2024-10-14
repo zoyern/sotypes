@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 05:30:23 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/14 14:57:03 by marvin           ###   ########.fr       */
+/*   Updated: 2024/10/14 21:37:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,16 @@ void	write_color(int fd, int colors[4], int swap)
 	if (colors[2] > 0)
 	{
 		set_color(foreground, colors[(swap + 0) % 2]);
-        write(fd, "\001", 1);
+		write(fd, "\001", 1);
 		write(fd, foreground, 19);
-        write(fd, "\002", 1);
+		write(fd, "\002", 1);
 	}
 	if (colors[2] > 1)
 	{
 		set_color(background, colors[(swap + 1) % 2]);
-        write(fd, "\001", 1);
+		write(fd, "\001", 1);
 		write(fd, background, 19);
-        write(fd, "\002", 1);
+		write(fd, "\002", 1);
 	}
 }
 

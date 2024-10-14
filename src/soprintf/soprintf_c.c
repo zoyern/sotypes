@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 19:05:00 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/14 14:58:48 by marvin           ###   ########.fr       */
+/*   Updated: 2024/10/14 21:36:10 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 void	ft_putchar_len(int fd, char c, size_t *len)
 {
-    if (len)
-	    *len += write(fd, &c, 1);
-    else
-	    write(fd, &c, 1);
+	if (len)
+		*len += write(fd, &c, 1);
+	else
+		write(fd, &c, 1);
 }
 
 void	ft_putstr_len(int fd, char *s, size_t *len)
 {
 	if (!s)
 		return (ft_putstr_len(fd, "(null)", len));
-    if (len)
-	    *len += write(fd, s, solib_strlen(s));
-    else
-        write(fd, s, solib_strlen(s));
+	if (len)
+		*len += write(fd, s, solib_strlen(s));
+	else
+		write(fd, s, solib_strlen(s));
 }
 
 void	ft_putstrs_len(int fd, char **strs, size_t *len)
@@ -40,8 +40,8 @@ void	ft_putstrs_len(int fd, char **strs, size_t *len)
 	while (strs[i])
 	{
 		ft_putnbr_len(fd, i, len);
-        ft_putchar_len(fd, '~', len);
-        ft_putstr_len(fd, strs[i], len);
+		ft_putchar_len(fd, '~', len);
+		ft_putstr_len(fd, strs[i], len);
 		ft_putchar_len(fd, '\n', len);
 		i++;
 	}
