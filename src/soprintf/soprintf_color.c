@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 05:30:23 by marvin            #+#    #+#             */
-/*   Updated: 2024/09/28 23:28:11 by marvin           ###   ########.fr       */
+/*   Updated: 2024/10/14 14:57:03 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,33 +46,37 @@ void	write_color(int fd, int colors[4], int swap)
 	if (colors[2] > 0)
 	{
 		set_color(foreground, colors[(swap + 0) % 2]);
+        write(fd, "\001", 1);
 		write(fd, foreground, 19);
+        write(fd, "\002", 1);
 	}
 	if (colors[2] > 1)
 	{
 		set_color(background, colors[(swap + 1) % 2]);
+        write(fd, "\001", 1);
 		write(fd, background, 19);
+        write(fd, "\002", 1);
 	}
 }
 
 int	write_options(int fd, int options)
 {
 	if (get_bit(options, 0))
-		write(fd, "\033[0m", 4);
+		write(fd, "\001\033[0m\002", 6);
 	if (get_bit(options, 1))
-		write(fd, "\033[1m", 4);
+		write(fd, "\001\033[1m\002", 6);
 	if (get_bit(options, 2))
-		write(fd, "\033[2m", 4);
+		write(fd, "\001\033[2m\002", 6);
 	if (get_bit(options, 3))
-		write(fd, "\033[3m", 4);
+		write(fd, "\001\033[3m\002", 6);
 	if (get_bit(options, 4))
-		write(fd, "\033[4m", 4);
+		write(fd, "\001\033[4m\002", 6);
 	if (get_bit(options, 5))
-		write(fd, "\033[5m", 4);
+		write(fd, "\001\033[5m\002", 6);
 	if (get_bit(options, 7))
-		write(fd, "\033[7m", 4);
+		write(fd, "\001\033[7m\002", 6);
 	if (get_bit(options, 8))
-		write(fd, "\033[8m", 4);
+		write(fd, "\001\033[8m\002", 6);
 	return (0);
 }
 
@@ -101,7 +105,7 @@ size_t	write_all_color(int fd, int colors[4], const char **s, va_list list_arg)
 			(*s)++;
 		}
 	}
-	write(fd, "\033[0m", 4);
+	write(fd, "\001\033[0m\002", 6);
 	return (len);
 }
 
