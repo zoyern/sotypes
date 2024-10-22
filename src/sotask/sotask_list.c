@@ -10,9 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <sotypes/all.h>
+#include <sotypes/all.h>
 
-t_sotask	*sonew_task(t_solib *solib, char *time, int (*callback)(), void *data)
+t_sotask	*sonew_task(t_solib *solib, char *time,
+				int (*callback)(), void *data)
 {
 	t_sotask	*task;
 
@@ -49,7 +50,7 @@ void	sotask_add(t_sotasks *list, unsigned long id, t_sotask *task)
 		return ;
 	current = list->current;
 	if (!current)
-		return ((void)(task->id = id, task->start = 1 ,
+		return ((void)(task->id = id, task->start = 1,
 			list->count++, list->current = task, list->first = task));
 	while (current->next)
 		current = current->next;
@@ -57,4 +58,3 @@ void	sotask_add(t_sotasks *list, unsigned long id, t_sotask *task)
 	list->count++;
 	current->next = task;
 }
-

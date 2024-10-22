@@ -60,12 +60,11 @@ typedef struct s_sotask
 typedef struct s_sotasks
 {
 	int			loop;
-    int 		count;
+	int			count;
 	long		starting;
 	t_sotask	*current;
 	t_sotask	*first;
 }	t_sotasks;
-
 
 typedef struct s_soenv
 {

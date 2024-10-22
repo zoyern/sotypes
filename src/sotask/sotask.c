@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <sotypes/all.h>
+#include <sotypes/all.h>
 
 void	sotask_change_state(t_sotask *sotask, int start, int work, int end)
 {
@@ -25,23 +25,27 @@ void	sotask_start(long time, t_sotasks *tasks, void *data)
 {
 	tasks->starting = time;
 	if (tasks->current->callback)
-		tasks->current->callback(time, tasks->current, tasks->current->data, data);
+		tasks->current->callback(time, tasks->current,
+			tasks->current->data, data);
 	sotask_change_state(tasks->current, 0, 1, 0);
 }
 
-void sotask_work(long time, t_sotasks *tasks, void *data)
+void	sotask_work(long time, t_sotasks *tasks, void *data)
 {
 	if (tasks->current->callback)
-		tasks->current->callback(time, tasks->current, tasks->current->data, data);
+		tasks->current->callback(time, tasks->current,
+			tasks->current->data, data);
 	if (tasks->starting - time >= tasks->current->time)
 		sotask_change_state(tasks->current, 0, 0, 1);
 }
 
-int sotask_end(long time, t_sotasks *tasks, void *data)
+int	sotask_end(long time, t_sotasks *tasks, void *data)
 {
 	t_sotask	*task;
+
 	if (tasks->current->callback)
-		tasks->current->callback(time, tasks->current, tasks->current->data, data);
+		tasks->current->callback(time, tasks->current,
+			tasks->current->data, data);
 	task = tasks->current->next;
 	if (task)
 	{
@@ -68,4 +72,3 @@ int	sotask(long time, t_sotasks *tasks, void *data)
 		return (sotask_end(time, tasks, data));
 	return (0);
 }
-

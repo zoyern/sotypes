@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:16:39 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/22 17:50:25 by marvin           ###   ########.fr       */
+/*   Updated: 2024/10/22 17:59:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ long long	solib_atoi(const char *nptr)
 	sign = 1;
 	num = 0;
 	while (nptr && (nptr[i] == ' ' || nptr[i] == '\f' || nptr[i] == '\n'
-		|| nptr[i] == '\r' || nptr[i] == '\t' || nptr[i] == '\v'))
+			|| nptr[i] == '\r' || nptr[i] == '\t' || nptr[i] == '\v'))
 		i++;
 	while (nptr && (nptr[i] == '-' || nptr[i] == '+'))
 		if (nptr[i++] == '-')
