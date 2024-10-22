@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:16:39 by marvin            #+#    #+#             */
-/*   Updated: 2024/09/28 22:54:14 by marvin           ###   ########.fr       */
+/*   Updated: 2024/10/22 17:50:25 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,28 +71,22 @@ char	*solib_strchr(const char *str, int c)
 	return (solib_strchr(str + 1, c));
 }
 
-char	*soprintf_get(t_solib *solib, const char *str, ...)
+long long	solib_atoi(const char *nptr)
 {
-	va_list	list_arg;
-	int		pipefd[2];
-	char	*buf;
-	char	*line;
-	char	*ret;
+	long long	i;
+	long long	sign;
+	long long	num;
 
-	if (pipe(pipefd) == -1)
-		solib_close(solib, EXIT_FAILURE);
-	if (!str)
-		return (NULL);
-	va_start(list_arg, str);
-	ft_printf(pipefd[1], str, list_arg);
-	buf = soenv_strdup(NULL, " ");
-	line = soenv_strdup(NULL, "");
-	close(pipefd[1]);
-	while (read(pipefd[0], buf, 1))
-		solib_strmcat(&line, buf);
-	free(buf);
-	ret = soenv_strdup(solib, line);
-	free(line);
-	close(pipefd[0]);
-	return (ret);
+	i = 0;
+	sign = 1;
+	num = 0;
+	while (nptr && (nptr[i] == ' ' || nptr[i] == '\f' || nptr[i] == '\n'
+		|| nptr[i] == '\r' || nptr[i] == '\t' || nptr[i] == '\v'))
+		i++;
+	while (nptr && (nptr[i] == '-' || nptr[i] == '+'))
+		if (nptr[i++] == '-')
+			sign *= -1;
+	while (nptr && (nptr[i] >= '0' && nptr[i] <= '9'))
+		num = (num * 10) + (nptr[i++] - '0');
+	return (num * sign);
 }

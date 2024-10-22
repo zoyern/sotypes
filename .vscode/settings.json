@@ -29,6 +29,7 @@
 		"vector": "c",
 		"sstream": "c",
 		"streambuf": "c",
-		"tuple": "c"
+		"tuple": "c",
+		"solib_utils.h": "c"
 	}
 }
