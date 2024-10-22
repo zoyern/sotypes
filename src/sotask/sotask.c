@@ -35,7 +35,7 @@ void	sotask_work(long time, t_sotasks *tasks, void *data)
 	if (tasks->current->callback)
 		tasks->current->callback(time, tasks->current,
 			tasks->current->data, data);
-	if (tasks->starting - time >= tasks->current->time)
+	if (time - tasks->starting >= tasks->current->time)
 		sotask_change_state(tasks->current, 0, 0, 1);
 }
 
