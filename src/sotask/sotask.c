@@ -50,8 +50,8 @@ int	sotask_end(long time, t_sotasks *tasks, void *data)
 	if (task)
 	{
 		tasks->current = task;
-		tasks->starting = time;
-		sotask_change_state(tasks->current, 0, 1, 0);
+		sotask_change_state(tasks->current, 1, 0, 0);
+		sotask_start(time, tasks, data);
 		return (0);
 	}
 	tasks->loop++;
