@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:16:39 by marvin            #+#    #+#             */
-/*   Updated: 2024/09/28 23:04:04 by marvin           ###   ########.fr       */
+/*   Updated: 2024/10/24 19:25:20 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,15 @@ int	check_c_in_str(const char **s, char c_in, char c_out, int *count)
 		(*count)--;
 	}
 	return (nbr);
+}
+
+t_sofuncs	sonew_sofuncs(int (*start)(),
+		int (*update)(), int (*quit)())
+{
+	t_sofuncs	funcs;
+
+	funcs.start = start;
+	funcs.update = update;
+	funcs.quit = quit;
+	return (funcs);
 }

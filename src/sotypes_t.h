@@ -45,6 +45,13 @@ typedef struct s_somemory
 	void		(*close)(t_solib *solib);
 }	t_somemory;
 
+typedef struct s_sofuncs
+{
+	int	(*start)();
+	int	(*update)();
+	int	(*quit)();
+}	t_sofuncs;
+
 typedef struct s_sotask
 {
 	unsigned long	id;
@@ -78,7 +85,6 @@ typedef struct s_solib
 {
 	t_somemory	*memory;
 	t_soenv		*env;
-	t_sofuncs	*funcs;
 	int			(*close)(t_solib *solib, int state);
 	void		*(*malloc)(t_solib *solib, size_t size);
 	int			(*free)(t_solib *solib, void *ptr);
