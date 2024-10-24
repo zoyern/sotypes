@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 01:57:56 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/22 17:50:39 by marvin           ###   ########.fr       */
+/*   Updated: 2024/10/24 19:27:55 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ int			set_option(const char *in, int *options);
 int			check_c_in_str(const char **s, char c_in, char c_out, int *count);
 int			read_hex_to_int(const char *color);
 long long	solib_atoi(const char *nptr);
+t_sofuncs	sonew_sofuncs(int (*start)(),
+				int (*update)(), int (*quit)());
 
 #endif
