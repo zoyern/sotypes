@@ -61,7 +61,9 @@ typedef struct s_sotask
 	int				end;
 	t_sotask		*next;
 	void			*data;
-	int				(*callback)();
+	int				(*callstart)();
+	int				(*callupdate)();
+	int				(*callquit)();
 }	t_sotask;
 
 typedef struct s_sotasks

@@ -13,7 +13,7 @@
 #include <sotypes/all.h>
 
 t_sotask	*sonew_task(t_solib *solib, char *time,
-				int (*callback)(), void *data)
+				t_sofuncs funcs, void *data)
 {
 	t_sotask	*task;
 
@@ -23,7 +23,9 @@ t_sotask	*sonew_task(t_solib *solib, char *time,
 	task->start = 0;
 	task->work = 0;
 	task->end = 0;
-	task->callback = callback;
+	task->callstart = funcs.start;
+	task->callupdate = funcs.update;
+	task->callquit = funcs.quit;
 	task->data = data;
 	task->next = NULL;
 	return (task);

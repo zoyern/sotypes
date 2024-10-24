@@ -24,16 +24,16 @@ void	sotask_change_state(t_sotask *sotask, int start, int work, int end)
 void	sotask_start(long time, t_sotasks *tasks, void *data)
 {
 	tasks->starting = time;
-	if (tasks->current->callback)
-		tasks->current->callback(time, tasks->current,
+	if (tasks->current->callstart)
+		tasks->current->callstart(time, tasks->current,
 			tasks->current->data, data);
 	sotask_change_state(tasks->current, 0, 1, 0);
 }
 
 void	sotask_work(long time, t_sotasks *tasks, void *data)
 {
-	if (tasks->current->callback)
-		tasks->current->callback(time, tasks->current,
+	if (tasks->current->callupdate)
+		tasks->current->callupdate(time, tasks->current,
 			tasks->current->data, data);
 	if (time - tasks->starting >= tasks->current->time)
 		sotask_change_state(tasks->current, 0, 0, 1);
@@ -43,8 +43,8 @@ int	sotask_end(long time, t_sotasks *tasks, void *data)
 {
 	t_sotask	*task;
 
-	if (tasks->current->callback)
-		tasks->current->callback(time, tasks->current,
+	if (tasks->current->callquit)
+		tasks->current->callquit(time, tasks->current,
 			tasks->current->data, data);
 	task = tasks->current->next;
 	if (task)
